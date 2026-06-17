@@ -27,3 +27,10 @@ Jalankan setiap cell di dalam `main.ipynb` secara berurutan:
 3. **Cell Langkah 3**: Menyalakan kamera dan melakukan pengenalan wajah real-time.
 
 > **PENTING**: Tekan tombol **'q'** pada keyboard (saat jendela tampilan kamera aktif) untuk menghentikan program dan mematikan kamera secara aman.
+
+## 🔍 Troubleshooting: NameError: name 'quit' is not defined saat Import
+Jika Anda menemui error `NameError: name 'quit' is not defined` saat menjalankan cell **Langkah 1 (Import)**:
+* **Penyebab**: Modul `face_recognition` membutuhkan modul `pkg_resources` yang telah dihapus di versi `setuptools` terbaru (>= 82.0.0) pada Python 3.14. Hal ini menyebabkan kegagalan import yang memicu panggilan internal fungsi `quit()` yang tidak dikenali oleh Jupyter.
+* **Solusi**: Kami telah menurunkan (*downgrade*) versi `setuptools` di dalam `venv` ke versi `<82`.
+* **Tindakan Anda**: Cukup klik tombol **"Restart Kernel"** (ikon putar melingkar ↻) di bagian atas menu VSCode Jupyter Notebook Anda, lalu jalankan kembali sel kodenya.
+
